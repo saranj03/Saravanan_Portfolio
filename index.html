@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saravanan J | Site Reliability Engineer</title>
 
-  <!-- Google Fonts: Poppins + Inter for modern pairing -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN for rapid modern styling -->
+
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- GSAP for smooth animations -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#0a66c2', accent: '#10b981' } } }
+    };
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -23,207 +26,68 @@
       --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       --glass: rgba(255, 255, 255, 0.25);
     }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; color: #0f172a; }
+    .dark body { color: #e5e7eb; }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      color: #0f172a;
-    }
-
-    .dark body {
-      color: #e5e7eb;
-    }
-
-    /* Hero with your cover.jpg background */
     .hero-section {
       background:
         linear-gradient(rgba(11,18,32,0.75), rgba(11,18,32,0.85)),
         url('cover.jpg') center/cover no-repeat fixed;
       min-height: 100vh;
     }
+    .dark { --glass: rgba(255, 255, 255, 0.1); }
+    .glass-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); }
+    .dark .glass-card { background: rgba(31, 41, 55, 0.6); border: 1px solid rgba(255,255,255,0.1); }
 
-    /* Dark Mode base */
-    .dark {
-      --glass: rgba(255, 255, 255, 0.1);
-    }
+    .floating { animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    .section-enter { opacity: 0; transform: translateY(50px); }
 
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .dark .glass-card {
-      background: rgba(31, 41, 55, 0.6);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .skill-chip {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .section-enter {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-
-    /* Profile pic CENTERED with same size & shape */
     .profile-pic-centered {
-      display: block;
-      margin: 2rem auto 3rem;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 4px solid var(--primary);
-      box-shadow:
-        0 0 0 6px rgba(10,102,194,0.25),
-        0 0 35px rgba(16,185,129,0.45);
-      z-index: 20;
-      transition: all 0.4s ease;
+      display: block; margin: 2rem auto 3rem; width: 140px; height: 140px; border-radius: 50%;
+      object-fit: cover; object-position: center top; border: 4px solid var(--primary);
+      box-shadow: 0 0 0 6px rgba(10,102,194,0.25), 0 0 35px rgba(16,185,129,0.45);
+      z-index: 20; transition: all 0.4s ease;
     }
-
     .profile-pic-centered:hover {
       transform: scale(1.1);
-      box-shadow:
-        0 0 0 8px rgba(10,102,194,0.3),
-        0 0 50px rgba(16,185,129,0.7);
+      box-shadow: 0 0 0 8px rgba(10,102,194,0.3), 0 0 50px rgba(16,185,129,0.7);
     }
-
     @media (max-width: 768px) {
-      .profile-pic-centered {
-        width: 120px;
-        height: 120px;
-        margin: 1.5rem auto 2.5rem;
-      }
+      .profile-pic-centered { width: 120px; height: 120px; margin: 1.5rem auto 2.5rem; }
     }
 
-    .recognition-card {
-      background: linear-gradient(135deg, #10b981, #059669);
-      min-height: 300px !important;
-    }
+    .recognition-card { background: linear-gradient(135deg, #10b981, #059669); min-height: 300px !important; }
+    .font-pop { font-family: 'Poppins', sans-serif; }
 
-    .font-pop {
-      font-family: 'Poppins', sans-serif;
-    }
+    /* Dark mode overrides */
+    .dark .bg-gradient-to-br { background: linear-gradient(to bottom right, #0b1220 0%, #1f2933 50%) !important; }
+    .dark .bg-white\/70 { background: rgba(31, 41, 55, 0.7) !important; }
+    .dark .bg-white\/80 { background: rgba(31, 41, 55, 0.8) !important; }
+    .dark .bg-slate-200 { background: #374151 !important; }
+    .dark .text-slate-900 { color: #f9fafb !important; }
+    .dark .text-slate-600 { color: #d1d5db !important; }
+    .dark .border-slate-200\/50 { border-color: rgba(75, 85, 99, 0.5) !important; }
+    .dark .bg-gradient-to-r { background: linear-gradient(to right, #1f2937, #111827) !important; }
+    .dark .bg-slate-100 { background: #1f2937 !important; }
+    .dark .bg-blue-50 { background: #1e3a8a !important; }
 
-    /* Dark mode specific overrides */
-    .dark .bg-gradient-to-br {
-      background: linear-gradient(to bottom right, #0b1220 0%, #1f2933 50%) !important;
-    }
-
-    .dark .bg-white\/70 {
-      background: rgba(31, 41, 55, 0.7) !important;
-    }
-
-    .dark .bg-white\/80 {
-      background: rgba(31, 41, 55, 0.8) !important;
-    }
-
-    .dark .bg-slate-200 {
-      background: #374151 !important;
-    }
-
-    .dark .text-slate-900 {
-      color: #f9fafb !important;
-    }
-
-    .dark .text-slate-600 {
-      color: #d1d5db !important;
-    }
-
-    .dark .border-slate-200\/50 {
-      border-color: rgba(75, 85, 99, 0.5) !important;
-    }
-
-    .dark .bg-gradient-to-r {
-      background: linear-gradient(to right, #1f2937, #111827) !important;
-    }
-
-    .dark .bg-slate-100 {
-      background: #1f2937 !important;
-    }
-
-    .dark .bg-blue-50 {
-      background: #1e3a8a !important;
-    }
-
-    /* SOLID TEXT COLORS FIX */
-
-    /* Remove gradient text from inner section headings */
-    #experience h3,
-    #experience h4,
-    #skills h3,
-    #skills h4,
-    #education h3,
-    #education h4 {
+    /* Solid text colors fix */
+    #experience h3, #experience h4, #skills h3, #skills h4, #education h3, #education h4 {
       background: none !important;
       -webkit-background-clip: border-box !important;
       -webkit-text-fill-color: inherit !important;
       color: #0f172a;
     }
-
-    .dark #experience h3,
-    .dark #experience h4,
-    .dark #skills h3,
-    .dark #skills h4,
-    .dark #education h3,
-    .dark #education h4 {
-      color: #e5e7eb;
-    }
-
-    /* Experience text (Core Responsibilities, Key Achievements) */
-    #experience p,
-    #experience ul li {
-      color: #0f172a;
-    }
-
-    .dark #experience p,
-    .dark #experience ul li {
-      color: #e5e7eb;
-    }
-
-    /* Skills text including Tools & Processes */
-    #skills .group,
-    #skills .group span,
-    #skills .group div {
-      color: #0f172a;
-    }
-
-    .dark #skills .group,
-    .dark #skills .group span,
-    .dark #skills .group div {
-      color: #e5e7eb;
-    }
-
-    /* Disable gradient chip text (it was making text transparent) */
-    .skill-chip {
-      background: none !important;
-      -webkit-text-fill-color: inherit !important;
-    }
-
-    .dark .skill-chip {
-      background: none !important;
-      -webkit-text-fill-color: inherit !important;
-    }
+    .dark #experience h3, .dark #experience h4, .dark #skills h3, .dark #skills h4,
+    .dark #education h3, .dark #education h4 { color: #e5e7eb; }
+    #experience p, #experience ul li { color: #0f172a; }
+    .dark #experience p, .dark #experience ul li { color: #e5e7eb; }
+    #skills .group, #skills .group span, #skills .group div { color: #0f172a; }
+    .dark #skills .group, .dark #skills .group span, .dark #skills .group div { color: #e5e7eb; }
+    .skill-chip { background: none !important; -webkit-text-fill-color: inherit !important; }
+    .dark .skill-chip { background: none !important; -webkit-text-fill-color: inherit !important; }
   </style>
 </head>
 
@@ -247,14 +111,12 @@
     </div>
   </nav>
 
-  <!-- Hero Section with CENTERED profile pic -->
+  <!-- Hero Section -->
   <section class="hero-section flex flex-col items-center justify-center text-white px-6 pt-20 pb-32 relative overflow-hidden">
     <div class="absolute inset-0 bg-black/10"></div>
-    
-    <!-- Profile picture CENTERED -->
+
     <img src="SaravananJ.jpg" alt="Saravanan J" class="profile-pic-centered">
 
-    <!-- Floating particles -->
     <div class="absolute top-20 left-10 w-20 h-20 bg-white/20 rounded-full floating"></div>
     <div class="absolute top-1/2 right-20 w-32 h-32 bg-white/10 rounded-full floating" style="animation-delay: -2s;"></div>
     <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-primary/30 rounded-full floating" style="animation-delay: -4s;"></div>
@@ -263,20 +125,20 @@
       <h1 class="text-5xl md:text-7xl font-bold mb-6 font-pop bg-gradient-to-r from-white via-slate-100 to-transparent bg-clip-text">
         Saravanan J
       </h1>
-      
+
       <p class="text-2xl md:text-3xl font-semibold mb-8 opacity-90 font-pop">Site Reliability Engineer (SRE)</p>
-      
+
       <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed opacity-90">
-        5+ years building reliable payment systems. SRE specialist in banking IT infrastructure, 
+        5+ years building reliable payment systems. SRE specialist in banking IT infrastructure,
         automation, and high-availability operations.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-        <a href="https://www.linkedin.com/in/saranj03/" target="_blank" 
+        <a href="https://www.linkedin.com/in/saranj03/" target="_blank"
            class="px-8 py-4 bg-white/20 backdrop-blur-sm rounded-2xl font-semibold hover:bg-white/30 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:scale-105">
           LinkedIn
         </a>
-        <a href="https://www.hackerrank.com/saran_j03" target="_blank" 
+        <a href="https://www.hackerrank.com/saran_j03" target="_blank"
            class="px-8 py-4 border-2 border-white/50 backdrop-blur-sm rounded-2xl font-semibold hover:bg-white/20 transition-all duration-300 text-lg hover:shadow-xl">
           HackerRank
         </a>
@@ -286,30 +148,29 @@
     </div>
   </section>
 
-  <!-- Bento Grid Experience -->
+  <!-- Experience -->
   <section id="experience" class="py-24 px-6">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-24 text-slate-900 dark:text-slate-100 font-pop">
-		Professional Journey
-	  </h2>
+        Professional Journey
+      </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        <!-- Main Experience Card -->
         <div class="lg:col-span-3 bg-white/70 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-slate-200/50 dark:border-slate-700/50 hover:shadow-3xl transition-all duration-500 section-enter">
           <h3 class="text-3xl font-bold mb-6 text-slate-900 dark:text-white font-pop">Assistant Manager – BNP Paribas ISPL</h3>
           <p class="text-xl text-slate-600 dark:text-slate-300 mb-8 font-medium">Site Reliability Engineer (2020 - Present)</p>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h4 class="font-semibold text-xl mb-4 text-primary font-pop">Core Responsibilities</h4>
               <ul class="space-y-3 text-lg text-slate-800 dark:text-slate-200">
-				<li><strong>SRE ownership of mission-critical payment engines</strong> (BPHv1, BPHv2, India & Indonesia Payment Engines)</li>
-				<li><strong>End-to-end SDLC support</strong> with strict adherence to <strong>regulatory and data-localization compliance</strong></li>
-				<li><strong>Production support and reliability engineering</strong> for <strong>FIS/C2P OPF (Open Payment Framework)</strong> payment orchestration platform</li>
-				<li><strong>Maintained 99.98% uptime</strong> for high-traffic, mission-critical payment applications</li>
-				<li><strong>Planned and executed Disaster Recovery (DR) play sessions</strong>, validating <strong>RTO/RPO objectives</strong> and ensuring business continuity through <strong>ITIL-aligned incident, change, and problem management</strong></li>
-				<li><strong>ISO 20022 payments expertise</strong> (pacs.008, pacs.009, camt, pain, etc.), supporting <strong>multi-country (11 markets) migration</strong> of domestic payment products from legacy systems to a modern payment engine</li>
-			  </ul>
+                <li><strong>SRE ownership of mission-critical payment engines</strong> (BPHv1, BPHv2, India &amp; Indonesia Payment Engines)</li>
+                <li><strong>End-to-end SDLC support</strong> with strict adherence to <strong>regulatory and data-localization compliance</strong></li>
+                <li><strong>Production support and reliability engineering</strong> for <strong>FIS/C2P OPF (Open Payment Framework)</strong> payment orchestration platform</li>
+                <li><strong>Maintained 99.98% uptime</strong> for high-traffic, mission-critical payment applications</li>
+                <li><strong>Planned and executed Disaster Recovery (DR) play sessions</strong>, validating <strong>RTO/RPO objectives</strong> and ensuring business continuity through <strong>ITIL-aligned incident, change, and problem management</strong></li>
+                <li><strong>ISO 20022 payments expertise</strong> (pacs.008, pacs.009, camt, pain, etc.), supporting <strong>multi-country (11 markets) migration</strong> of domestic payment products from legacy systems to a modern payment engine</li>
+              </ul>
             </div>
             <div>
               <h4 class="font-semibold text-xl mb-4 text-accent font-pop">Key Achievements</h4>
@@ -318,14 +179,14 @@
                 <li>• Jenkins/Ansible non-prod release automation</li>
                 <li>• PGP/CFT secure report automation</li>
                 <li>• Built a tactical solution to avoid regulatory job failure</li>
-				<li>• Improved SLA compliance and client trust by automating identification of SLA-breached payment transactions using PL/SQL and shell scripting.</li>
-				<li>• Single-handed greenfield delivery of Indonesia Payment Engine (11 environments) under tight timelines.</li>
+                <li>• Improved SLA compliance and client trust by automating identification of SLA-breached payment transactions using PL/SQL and shell scripting.</li>
+                <li>• Single-handed greenfield delivery of Indonesia Payment Engine (11 environments) under tight timelines.</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- Awards Sidebar -->
+        <!-- Awards Sidebar (updated: 2026 Q2 added) -->
         <div class="recognition-card text-white rounded-3xl p-10 shadow-2xl hover:scale-105 transition-all duration-500 section-enter flex flex-col justify-center items-center text-center lg:min-h-[320px]">
           <div class="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mb-6 shadow-2xl">
             <span class="text-3xl">🏆</span>
@@ -333,19 +194,19 @@
           <h4 class="text-2xl md:text-3xl font-bold mb-6 font-pop">Stellar Performance</h4>
           <div class="space-y-4">
             <p class="text-2xl font-bold bg-white/30 p-6 rounded-3xl shadow-xl">BNPP Stellar Performance Award</p>
-            <p class="text-lg opacity-90 font-semibold tracking-wide">2023 Q1</p>
+            <p class="text-lg opacity-90 font-semibold tracking-wide">2023 Q1 &nbsp;•&nbsp; 2026 Q2</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Grid -->
+  <!-- Skills -->
   <section id="skills" class="py-24 px-6 bg-gradient-to-r from-slate-100 to-blue-50 dark:from-slate-900/80 dark:to-slate-800/80">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 text-slate-900 dark:text-slate-100 font-pop">
-		Technical Expertise
-	  </h2>
+        Technical Expertise
+      </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-200/50 dark:border-slate-700/50 section-enter">
@@ -367,30 +228,26 @@
           <div class="space-y-3 text-lg text-slate-800 dark:text-slate-200">
             <span class="block font-semibold skill-chip">IBM WebSphere (Base/ND)</span>
             <span class="block font-semibold skill-chip">Unix/Linux • Axway CFT • SFTP</span>
-			<span class="block font-semibold skill-chip">IBM HTTP Server • Apache HTTP Server </span>
+            <span class="block font-semibold skill-chip">IBM HTTP Server • Apache HTTP Server </span>
             <span class="block font-semibold skill-chip">Shell • Python (Automation)</span>
           </div>
         </div>
-		        <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-200/50 dark:border-slate-700/50 section-enter">
+
+        <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-200/50 dark:border-slate-700/50 section-enter">
           <h3 class="text-2xl font-bold mb-6 text-emerald-600 dark:text-emerald-300 flex items-center gap-3 font-pop">
             <span class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 rounded-2xl flex items-center justify-center text-xl">📨</span>
             Functional Skills
           </h3>
           <div class="space-y-3 text-lg text-slate-800 dark:text-slate-200">
-            <span class="block font-semibold">
-              ISO 20022 message types for domestic payment products
-            </span>
-            <span class="block text-sm opacity-90">
-              Hands-on with pacs.008, pacs.009, camt, pain series and related flows for multi-country payment migration.
-            </span>
+            <span class="block font-semibold">ISO 20022 message types for domestic payment products</span>
+            <span class="block text-sm opacity-90">Hands-on with pacs.008, pacs.009, camt, pain series and related flows for multi-country payment migration.</span>
           </div>
         </div>
-
 
         <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-200/50 dark:border-slate-700/50 section-enter md:col-span-2 lg:col-span-1">
           <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 text-slate-900 dark:text-white font-pop">
             <span class="w-12 h-12 bg-slate-200 dark:bg-slate-700 rounded-2xl flex items-center justify-center text-xl">📊</span>
-            Tools & Processes
+            Tools &amp; Processes
           </h3>
           <div class="grid grid-cols-2 gap-3 text-lg font-medium text-slate-800 dark:text-slate-200">
             <span>Jira • ServiceNow</span>
@@ -407,11 +264,10 @@
   <section id="education" class="py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 bg-gradient-to-r from-primary via-slate-900 dark:via-slate-100 to-accent bg-clip-text text-transparent font-pop">
-        Education & Certifications
+        Education &amp; Certifications
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Education -->
         <div class="bg-white/70 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-slate-200/50 dark:border-slate-700/50 hover:shadow-3xl transition-all duration-500 section-enter">
           <h3 class="text-3xl font-bold mb-8 text-primary font-pop">Academic Background</h3>
           <div class="space-y-6">
@@ -446,19 +302,8 @@
               <span class="text-3xl">✔</span>
               <div>
                 <h4 class="font-bold text-xl mb-2 font-pop">Python Basics</h4>
-                <p class="text-purple-100 mb-2">Great Learning</p>
-                <a href="https://olympus1.mygreatlearning.com/course_certificate/PAFNKDLR" target="_blank" class="text-sm underline hover:no-underline">View Certificate</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500">
-            <div class="flex items-start gap-4">
-              <span class="text-3xl">✔</span>
-              <div>
-                <h4 class="font-bold text-xl mb-2 font-pop">C Programming (Intermediate)</h4>
-                <p class="text-emerald-100 mb-2">HackerRank</p>
-                <a href="https://www.hackerrank.com/certificates/fe66345864d0" target="_blank" class="text-sm underline hover:no-underline">View Certificate</a>
+                <p class="text-purple-100 mb-3">Great Learning</p>
+                <a href="https://olympus1.mygreatlearning.com/course_certificate/PAFNKDLR" target="_blank" class="underline font-semibold">View Certificate</a>
               </div>
             </div>
           </div>
@@ -467,9 +312,20 @@
             <div class="flex items-start gap-4">
               <span class="text-3xl">✔</span>
               <div>
+                <h4 class="font-bold text-xl mb-2 font-pop">C Programming (Intermediate)</h4>
+                <p class="text-blue-100 mb-3">HackerRank</p>
+                <a href="https://www.hackerrank.com/certificates/fe66345864d0" target="_blank" class="underline font-semibold">View Certificate</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="group bg-gradient-to-r from-emerald-500 to-teal-500 text-white p-8 rounded-3xl shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl">✔</span>
+              <div>
                 <h4 class="font-bold text-xl mb-2 font-pop">SQL Basics</h4>
-                <p class="text-blue-100 mb-2">HackerRank</p>
-                <a href="https://www.hackerrank.com/certificates/aa7186e96432" target="_blank" class="text-sm underline hover:no-underline">View Certificate</a>
+                <p class="text-emerald-100 mb-3">HackerRank</p>
+                <a href="https://www.hackerrank.com/certificates/aa7186e96432" target="_blank" class="underline font-semibold">View Certificate</a>
               </div>
             </div>
           </div>
@@ -479,124 +335,32 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-900/50 text-white py-12 px-6 mt-24">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="w-20 h-20 mx-auto mb-8 bg-gradient-to-r from-primary to-accent rounded-3xl flex items-center justify-center text-3xl shadow-2xl font-pop">
-        SJ
-      </div>
-      <p class="text-xl mb-6 opacity-90 font-pop">Building reliable systems that power banking worldwide</p>
-      <p class="text-sm opacity-75">© 2025 Saravanan J. Crafted with ❤️ in Chennai.</p>
-    </div>
+  <footer class="py-12 px-6 text-center bg-slate-900 text-white">
+    <div class="text-3xl font-bold mb-3 font-pop">SJ</div>
+    <p class="opacity-80 mb-2">Building reliable systems that power banking worldwide</p>
+    <p class="text-sm opacity-60">© 2026 Saravanan J. Crafted with ❤️ in Chennai.</p>
   </footer>
 
   <script>
-    // Theme Toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-
-    themeToggle.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      const isDark = html.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      
-      // Update toggle icons immediately
-      const sunIcon = themeToggle.querySelector('span:last-child');
-      const moonIcon = themeToggle.querySelector('span:first-child');
-      
-      if (isDark) {
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
-      } else {
-        moonIcon.classList.remove('hidden');
-        sunIcon.classList.add('hidden');
-      }
-    });
-
-    // Load saved theme on page load
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      html.classList.add('dark');
-      // Set correct icons for dark mode
-      document.querySelector('span:first-child').classList.add('hidden');
-      document.querySelector('span:last-child').classList.remove('hidden');
+    // Theme toggle (remembers choice)
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
     }
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        html.classList.toggle('dark', e.matches);
-      }
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
     });
 
-    // GSAP Animations
+    // Scroll-in animations
     gsap.registerPlugin(ScrollTrigger);
-
-    // Hero text animation
-    gsap.from(".hero-section h1, .hero-section p", {
-      duration: 1.2,
-      y: 50,
-      opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out"
-    });
-
-    // Profile pic entrance animation - CENTERED
-    gsap.from(".profile-pic-centered", {
-      duration: 1.5,
-      scale: 0.5,
-      rotation: -180,
-      opacity: 0,
-      ease: "back.out(1.7)"
-    });
-
-    // Section animations
-    gsap.utils.toArray('.section-enter').forEach((section, i) => {
-      gsap.fromTo(section, 
-        { opacity: 0, y: 60 },
-        { 
-          opacity: 1, 
-          y: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 100) {
-        nav.style.background = html.classList.contains('dark') 
-          ? 'rgba(15, 23, 42, 0.95)' 
-          : 'rgba(255, 255, 255, 0.95)';
-      } else {
-        nav.style.background = html.classList.contains('dark') 
-          ? 'rgba(15, 23, 42, 0.9)' 
-          : 'rgba(255, 255, 255, 0.1)';
-      }
-      nav.style.backdropFilter = 'blur(20px)';
-    });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+    gsap.utils.toArray('.section-enter').forEach((el) => {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' }
       });
     });
   </script>
-
 </body>
 </html>
