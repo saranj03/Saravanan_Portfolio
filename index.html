@@ -100,6 +100,8 @@
         <a href="#" class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-pop">SJ</a>
         <div class="hidden md:flex space-x-8">
           <a href="#experience" class="hover:text-primary transition-colors text-slate-700 dark:text-slate-200">Experience</a>
+          <a href="#ai-projects" class="hover:text-primary transition-colors text-slate-700 dark:text-slate-200">AI Projects</a>
+          <a href="#utilities" class="hover:text-primary transition-colors text-slate-700 dark:text-slate-200">Utilities</a>
           <a href="#skills" class="hover:text-primary transition-colors text-slate-700 dark:text-slate-200">Skills</a>
           <a href="#education" class="hover:text-primary transition-colors text-slate-700 dark:text-slate-200">Education</a>
         </div>
@@ -201,6 +203,95 @@
     </div>
   </section>
 
+  <!-- AI Projects -->
+  <section id="ai-projects" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-slate-900 dark:text-slate-100 font-pop">
+        AI Projects
+      </h2>
+      <p class="text-center text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-16 max-w-3xl mx-auto">
+        Multi-agent automation built with <strong class="text-primary">OpenCode AI</strong> and adopted by multiple teams.
+      </p>
+
+      <div class="max-w-6xl mx-auto bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border-t-4 border-accent hover:-translate-y-2 transition-all duration-500 section-enter">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 bg-accent/10 dark:bg-accent/20 rounded-2xl flex items-center justify-center text-2xl">📧</div>
+          <h3 class="text-3xl font-bold text-slate-900 dark:text-white font-pop">Mail-to-Jira</h3>
+        </div>
+        <p class="text-lg text-slate-700 dark:text-slate-300 mb-8">AI-driven automation that turns sent emails into the right Jira update, cutting duplicate and manual Jira creation across teams.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="rounded-2xl p-6 bg-accent/10 dark:bg-accent/20">
+            <div class="text-sm font-semibold text-accent mb-2 font-pop">AGENT 1</div>
+            <p class="text-slate-800 dark:text-slate-200">Classifies the <strong>application</strong> and <strong>Jira type</strong> from the email context</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-primary/10 dark:bg-primary/20">
+            <div class="text-sm font-semibold text-primary mb-2 font-pop">AGENT 2</div>
+            <p class="text-slate-800 dark:text-slate-200">Matches the context with <strong>existing Jira</strong> in the centralized tracker (maintained in Bitbucket across teams) to create a <strong>subtask or worklog</strong></p>
+          </div>
+          <div class="rounded-2xl p-6 bg-purple-500/10 dark:bg-purple-500/20">
+            <div class="text-sm font-semibold text-purple-600 dark:text-purple-300 mb-2 font-pop">AGENT 3</div>
+            <p class="text-slate-800 dark:text-slate-200">Generates the <strong>subtask summary</strong></p>
+          </div>
+        </div>
+
+        <ul class="space-y-2 text-lg text-slate-700 dark:text-slate-300 mb-6">
+          <li>• Polls Outlook sent emails using the <strong>Outlook COM API</strong></li>
+          <li>• Uses <strong>REST APIs</strong> to call the AI models and to perform actions in Jira</li>
+          <li>• Avoids duplicate tickets and removes manual Jira creation</li>
+        </ul>
+
+        <div class="flex flex-wrap gap-2 text-sm font-semibold">
+          <span class="px-3 py-1 rounded-full bg-accent/10 text-accent">Outlook COM API</span>
+          <span class="px-3 py-1 rounded-full bg-accent/10 text-accent">AI Agents</span>
+          <span class="px-3 py-1 rounded-full bg-accent/10 text-accent">REST API</span>
+          <span class="px-3 py-1 rounded-full bg-accent/10 text-accent">Jira</span>
+          <span class="px-3 py-1 rounded-full bg-accent/10 text-accent">Bitbucket</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automation Utilities (highlighted) -->
+  <section id="utilities" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-slate-900 dark:text-slate-100 font-pop">
+        Automation Utilities
+      </h2>
+      <p class="text-center text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-16 max-w-3xl mx-auto">
+        Built with <strong class="text-primary">OpenCode AI</strong> and adopted by multiple teams to streamline their BAU operations.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- 1 -->
+        <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border-t-4 border-primary hover:-translate-y-2 transition-all duration-500 section-enter">
+          <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-2xl flex items-center justify-center text-2xl mb-5">🔐</div>
+          <h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white font-pop">Checksum Validator &amp; CD Initiator</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-5">Validates artifact integrity and triggers continuous deployment, managing multi-vendor application deployments from a single flow.</p>
+          <div class="flex flex-wrap gap-2 text-sm font-semibold">
+            <span class="px-3 py-1 rounded-full bg-primary/10 text-primary">PowerShell</span>
+            <span class="px-3 py-1 rounded-full bg-primary/10 text-primary">Artifactory</span>
+            <span class="px-3 py-1 rounded-full bg-primary/10 text-primary">Jenkins</span>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border-t-4 border-purple-500 hover:-translate-y-2 transition-all duration-500 section-enter">
+          <div class="w-14 h-14 bg-purple-500/10 dark:bg-purple-500/20 rounded-2xl flex items-center justify-center text-2xl mb-5">🩺</div>
+          <h3 class="text-2xl font-bold mb-3 text-slate-900 dark:text-white font-pop">Standard Health Check Utility</h3>
+          <p class="text-slate-700 dark:text-slate-300 mb-5">One standard health check for teams managing multiple applications, significantly reducing the turnaround time (TAT) to complete checks.</p>
+          <div class="flex flex-wrap gap-2 text-sm font-semibold">
+            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300">Jenkins</span>
+            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300">Ansible</span>
+            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300">Shell</span>
+            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300">SQL</span>
+            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300">Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Skills -->
   <section id="skills" class="py-24 px-6 bg-gradient-to-r from-slate-100 to-blue-50 dark:from-slate-900/80 dark:to-slate-800/80">
     <div class="max-w-7xl mx-auto">
@@ -229,7 +320,7 @@
             <span class="block font-semibold skill-chip">IBM WebSphere (Base/ND)</span>
             <span class="block font-semibold skill-chip">Unix/Linux • Axway CFT • SFTP</span>
             <span class="block font-semibold skill-chip">IBM HTTP Server • Apache HTTP Server </span>
-            <span class="block font-semibold skill-chip">Shell • Python (Automation)</span>
+            <span class="block font-semibold skill-chip">Shell • Python • PowerShell (Automation)</span>
           </div>
         </div>
 
@@ -254,6 +345,7 @@
             <span>Putty • WinSCP</span>
             <span>Eclipse • Geneos</span>
             <span>ITIL • MySQL</span>
+            <span>OpenCode AI</span>
           </div>
         </div>
       </div>
